@@ -1,0 +1,23 @@
+import difflib
+
+def detect_plagiarism(text1, text2):
+    """
+    Detect plagiarism between two texts using difflib's SequenceMatcher.
+    
+    Args:
+    text1 (str): The first text to compare.
+    text2 (str): The second text to compare.
+    
+    Returns:
+    float: A plagiarism score between 0 and 1. 
+           0 means no plagiarism, while 1 means identical texts.
+    """
+    matcher = difflib.SequenceMatcher(None, text1, text2)
+    return matcher.ratio()
+
+# Example usage
+original_text = "This is the original text."
+copied_text = "This is the original text with some changes."
+
+plagiarism_score = detect_plagiarism(original_text, copied_text)
+print("Plagiarism score:", plagiarism_score)
